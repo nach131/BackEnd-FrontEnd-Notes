@@ -1,0 +1,31 @@
+IMPORTANTE
+si te dejas la base de datos local, hay que borrar el repositorio de Heroku master desde 
+Sourcetree y volver a subir
+
+heroku create nombre app
+
+heroku apps:rename --app nombre_a_cambiar Nuevo_Nombre
+
+git remote -v
+
+git commit -m "anadido"
+
+git push heroku master
+
+Para tener la consola de log abierta
+
+heroku logs --tail
+
+========================
+git branch
+
+git checkout rama
+git merge -s ours master
+git checkout master
+git merge rama
+
+=================
+
+heroku config:add TZ="Europe/Paris"
+
+=== git push ===

@@ -1,0 +1,36 @@
+{
+  "name": "notes_backend_frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "build": "cd client && npm run build",
+    "dev1": "nodemon index.js",
+    "lint": "eslint .",
+    "devp": "npm run puerto && npm run dev1",
+    "start": "node app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "puerto": "./puerto.sh",
+    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon app/\" \"npm run client\""
+  },
+  "author": "nach.js",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "standard": "^16.0.3"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  }
+}
