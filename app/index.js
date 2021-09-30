@@ -6,7 +6,7 @@ const app = express()
 const path = require('path')
 const Note = require('../models/Note')
 const handleError = require('../middleware/handleError')
-const notFound = require('../middleware/notFound')
+// const notFound = require('../middleware/notFound')
 
 app.use(cors())
 app.use(express.json())
@@ -81,7 +81,7 @@ app.post('/api/notes', (req, res) => {
   })
 })
 
-app.use(notFound)
+// app.use(notFound)
 
 app.use(handleError)
 
