@@ -12,9 +12,10 @@ app.use(cors())
 app.use(express.json())
 const PORT = process.env.PORT || 3001
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('client/build'))
+// }
+app.use(express.static('client/build'))
 
 app.get('/', (req, res) => {
   res.send('<h1>hola q ases</h1>')
