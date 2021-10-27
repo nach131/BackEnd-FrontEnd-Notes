@@ -1,0 +1,19 @@
+const { average } = require('../utils/fot_testing')
+
+describe('average', () => {
+  test('Solo un valor', () => {
+    expect(average([2])).toBe(2)
+  })
+})
+
+describe('calculo de varios correcto', () => {
+  test('Solo un valor', () => {
+    expect(average([1, 2, 3, 4, 5, 6])).toBe(3.5)
+  })
+})
+
+describe('empty array es cero', () => {
+  test('Solo un valor', () => {
+    expect(average([])).toBe(0)
+  })
+})

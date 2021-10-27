@@ -10,15 +10,16 @@
   "scripts": {
     "build": "cd client && npm run build",
     "lint": "eslint .",
-    "dev1": "nodemon index.js",
+    "dev1": "NODE_ENV=development nodemon index.js",
     "nach": "nodemon app/",
     "nachp": "npm run puerto && npm run dev1",
-    "start": "node app/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node app/index.js",
+    "test": "NODE_ENV=test jest --verbose --silent --detectOpenHandles tests/notes.test.js",
+    "test:watch": "npm run test -- --watch",
     "puerto": "./puerto.sh",
     "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon app/\" \"npm run client\""
   },
-  "author": "nach.js",
+  "author": "nach131",
   "license": "ISC",
   "dependencies": {
     "cors": "2.8.5",
@@ -32,9 +33,17 @@
     "eslint-plugin-import": "2.24.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "5.1.0",
-    "standard": "16.0.3"
+    "jest": "^27.3.1",
+    "standard": "16.0.3",
+    "supertest": "^6.1.6"
   },
   "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
+    "extends": "./node_modules/standard/eslintrc.json",
+    "env": {
+      "jest": true
+    }
+  },
+  "jest": {
+    "testEnviroment": "node"
   }
 }
