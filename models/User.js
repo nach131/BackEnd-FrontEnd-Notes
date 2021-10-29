@@ -1,7 +1,12 @@
+const uniqueValidator = require('mongoose-unique-validator')
 const { model, Schema } = require('mongoose')
 
+//Decimos que username sea un valor unico
 const userSchema = new Schema({
-  username: String,
+  username: {
+    type: String,
+    unique: true
+  },
   name: String,
   passwordHash: String,
   notes: [{
@@ -21,5 +26,8 @@ userSchema.set('toJSON', {
 })
 
 const User = model('User', userSchema)
+
+//Aplicamos el uniqueValidator al schema
+userSchema.plugin(uniqueValidator)
 
 module.exports = User

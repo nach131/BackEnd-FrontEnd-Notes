@@ -6,6 +6,8 @@ const app = express()
 const path = require('path')
 
 const Note = require('../models/Note')
+const User = require('../models/User')
+
 const handleError = require('../middleware/handleError')
 const notFound = require('../middleware/notFound')
 
@@ -65,6 +67,42 @@ app.delete('/api/notes/:id', (req, res, next) => {
 })
 
 app.post('/api/notes', async (req, res, next) => {
+  const {
+    content,
+    important = false,
+    userId
+  } = req.body
+
+  const user = await User.findById(userId)
+
+  if (!content) {
+    return res.status(400).json({
+      error: 'content is missing'
+    })
+  }
+
+  const newNote = new Note({
+    content,
+    date: new Date(),
+    important,
+    user: user._id
+  })
+
+  try {
+    const savedNote = await newNote.save()
+
+    //Rcuperamos las notas del usuario y añadimos la nueva
+    user.notes = user.notes.concat(savedNote._id)
+    await user.save()
+
+    res.json(savedNote)
+  } catch (error) {
+    next(error)
+  }
+})
+
+
+app.post('/api/notes_old', async (req, res, next) => {
   const note = req.body
 
   if (!note || !note.content) {
@@ -79,9 +117,6 @@ app.post('/api/notes', async (req, res, next) => {
     important: typeof note.important !== 'undefined' ? note.important : false
   })
 
-  // newNote.save().then(savedNote => {
-  //   res.json(savedNote)
-  // })
   try {
     const savedNote = await newNote.save()
     res.json(savedNote)
