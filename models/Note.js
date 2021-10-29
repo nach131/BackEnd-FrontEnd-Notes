@@ -1,4 +1,4 @@
-const { model, Schema } = require('mongoose')
+const { Schema, model } = require('mongoose')
 
 const noteSchema = new Schema({
   content: String,
@@ -18,22 +18,6 @@ noteSchema.set('toJSON', {
   }
 })
 
-// Nombre del modelo en singular
 const Note = model('Note', noteSchema)
-
-// const note = new Note({
-//   content: 'Otra nota',
-//   date: new Date(),
-//   important: true
-// })
-
-// note.save()
-//   .then(result => {
-//     console.log(result)
-//     mongoose.connection.close()
-//   })
-//   .catch(err => {
-//     console.error(err)
-//   })
 
 module.exports = Note
