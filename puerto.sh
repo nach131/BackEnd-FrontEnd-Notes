@@ -2,7 +2,7 @@
 declare -a array
 
 # lsof -t -i:3001
-array+=("$(lsof -t -i:3001)")
+array+=("$(lsof -t -i:8089)")
 
 ARR+=("$(ls -d */)")
 

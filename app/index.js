@@ -9,6 +9,8 @@ const Note = require('../models/Note')
 const handleError = require('../middleware/handleError')
 const notFound = require('../middleware/notFound')
 
+const usersRouter = require('../controllers/users')
+
 app.use(cors())
 app.use(express.json())
 const PORT = process.env.PORT || 8090
@@ -87,6 +89,8 @@ app.post('/api/notes', async (req, res, next) => {
     next(error)
   }
 })
+
+app.use('/api/users', usersRouter)
 
 app.use(notFound)
 
