@@ -15,7 +15,7 @@ const User = require('./models/user.js')
 app.use(cors())
 app.use(express.json())
 // app.use('/images', express.static('images'))
-app.use(express.static('client/build'))
+app.use(express.static('build'))
 
 Sentry.init({
   dsn: 'https://ac034ebd99274911a8234148642e044c@o537348.ingest.sentry.io/5655435',
