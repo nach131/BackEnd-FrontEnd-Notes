@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/notes
+POST http://localhost:8089/api/notes
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2JlMGZhMzkwY2U2MDI5N2M1N2FlYiIsInVzZXJuYW1lIjoibmFjaG8iLCJpYXQiOjE2MzU4OTIwMTQsImV4cCI6MTYzNjQ5NjgxNH0.KGqY9i75-8cakmNbu-O4dA72z_8cOjmAVqVNAfhTZR4
 
 {
-  "content": "Suscríbete a @midudev",
-  "important": true,
-  "userId": "617be0fa390ce60297c57aeb"
+  "content": "Suscríbete a @midudevaaaa",
+  "important": true
 }
